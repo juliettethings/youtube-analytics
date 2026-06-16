@@ -699,121 +699,6 @@
     .api-hint a { color: #ff6666; text-decoration: none; }
     .api-hint a:hover { text-decoration: underline; }
 
-    /* ── CLAUDE AI 트리거 바 ── */
-    .claude-ai-trigger-bar {
-      background: linear-gradient(135deg, #1a1025 0%, #141414 100%);
-      border: 1px solid #3a1f6a;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    /* ── CLAUDE AI 심층 분석 ── */
-    .claude-setup-card {
-      background: linear-gradient(135deg, #1a1025 0%, #161616 100%);
-      border: 1px solid #3a1f6a;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-
-    .claude-result-section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 14px;
-    }
-
-    .claude-result-section h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--purple);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .claude-result-section h3::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #2a1a4a;
-    }
-
-    .claude-text {
-      font-size: 13px;
-      color: #bbb;
-      line-height: 1.8;
-      white-space: pre-wrap;
-    }
-
-    .claude-idea-card {
-      background: #0f0a1a;
-      border: 1px solid #2a1a4a;
-      border-left: 3px solid var(--purple);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 14px;
-      margin-bottom: 8px;
-    }
-
-    .claude-idea-card .ci-num {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--purple);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 4px;
-    }
-
-    .claude-idea-card .ci-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .claude-idea-card .ci-body {
-      font-size: 12px;
-      color: #888;
-      line-height: 1.5;
-    }
-
-    .claude-persona-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    @media (max-width: 600px) { .claude-persona-grid { grid-template-columns: 1fr; } }
-
-    .claude-persona-item {
-      background: #0f0a1a;
-      border: 1px solid #2a1a4a;
-      border-radius: 8px;
-      padding: 11px 13px;
-    }
-
-    .claude-persona-item .cp-label {
-      font-size: 10px;
-      color: var(--purple);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 4px;
-    }
-
-    .claude-persona-item .cp-value {
-      font-size: 12px;
-      color: #bbb;
-      line-height: 1.5;
-    }
-
     .tag-pill {
       display: inline-block;
       background: var(--surface2); border: 1px solid var(--border2);
@@ -1183,18 +1068,9 @@
           <span class="apikey-status" id="g-ytStatus"></span>
         </div>
       </div>
-      <div class="apikey-field">
-        <span class="apikey-label apikey-help-trigger" onclick="toggleKeyHelp('claude')">✦ Claude API <span style="font-size:9px;opacity:0.5;">?</span></span>
-        <div class="apikey-input-wrap">
-          <input type="password" id="g-claudeKey" placeholder="sk-ant-..." autocomplete="off"
-            oninput="syncApiKeys()" />
-          <span class="apikey-status" id="g-claudeStatus"></span>
-        </div>
-      </div>
     </div>
     <div class="apikey-collapsed-info" id="apikeyCollapsedInfo">
       <span class="apikey-pill" id="pill-yt">🔑 YouTube</span>
-      <span class="apikey-pill" id="pill-claude">✦ Claude</span>
     </div>
     <button class="apikey-toggle" onclick="toggleApikeyBar()" id="apikeyToggle" title="API 키 접기/펼치기">
       <span id="apikeyToggleIcon">▲</span>
@@ -1214,17 +1090,6 @@
       <li>생성된 키 복사 → 여기에 붙여넣기</li>
     </ol>
     <div class="apikey-help-note">✅ 무료 · 일 10,000 쿼터 (채널 100개 이상 분석 가능)</div>
-  </div>
-</div>
-<div class="apikey-help-panel" id="help-claude" style="display:none;">
-  <div class="apikey-help-inner">
-    <div class="apikey-help-title">✦ Anthropic (Claude) API 키 발급 방법</div>
-    <ol class="apikey-help-steps">
-      <li><a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> 접속 → 회원가입 / 로그인</li>
-      <li>좌측 메뉴 → <strong>API Keys</strong> → <strong>Create Key</strong></li>
-      <li>키 이름 입력 후 생성 → 복사 → 여기에 붙여넣기</li>
-    </ol>
-    <div class="apikey-help-note">💡 댓글 분석 1회 기준 약 $0.003 (Haiku) ~ $0.015 (Sonnet) 수준</div>
   </div>
 </div>
 
@@ -1310,27 +1175,6 @@
 
   <div class="video-list" id="r-videoList"></div>
 
-  <!-- 조회수 분석 AI 패널 -->
-  <div id="ratio-ai-panel" style="display:none;margin-top:20px;">
-    <div class="claude-ai-trigger-bar">
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--text);">✦ Claude AI 채널 전략 분석</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">고성과·저성과 영상 패턴을 분석해서 다음 콘텐츠 전략을 제안받으세요</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <select id="ratio-claude-model" style="font-size:12px;padding:6px 9px;width:auto;">
-          <option value="claude-haiku-4-5-20251001">Haiku (빠름)</option>
-          <option value="claude-sonnet-4-6" selected>Sonnet (균형)</option>
-        </select>
-        <button class="btn" style="background:var(--purple);padding:8px 18px;font-size:12px;" onclick="runTabClaudeAnalysis('ratio')">✦ 분석 시작</button>
-      </div>
-    </div>
-    <div id="ratio-claude-progress" style="display:none;text-align:center;padding:32px;">
-      <div class="spinner" style="border-top-color:var(--purple);"></div>
-      <div style="font-size:13px;color:var(--muted);margin-top:10px;">Claude가 영상 데이터를 분석 중...</div>
-    </div>
-    <div id="ratio-claude-result" style="display:none;"></div>
-  </div>
 
 </div>
 </div>
@@ -1405,7 +1249,6 @@
       <div class="inner-tab" onclick="switchInner('sentiment')" id="it-sentiment">💡 반응 분석</div>
       <div class="inner-tab" onclick="switchInner('ideas')" id="it-ideas">✨ 기획 아이디어</div>
       <div class="inner-tab" onclick="switchInner('topcomments')" id="it-topcomments">🏆 인기 댓글</div>
-      <div class="inner-tab" onclick="switchInner('claude')" id="it-claude" style="color:var(--purple);border-color:var(--purple);">✦ AI 심층 분석</div>
     </div>
 
     <!-- KEYWORDS -->
@@ -1464,44 +1307,6 @@
         <h3>🏆 좋아요 많은 댓글 TOP 20</h3>
         <div class="comment-list" id="c-topComments"></div>
       </div>
-    </div>
-
-    <!-- AI 심층 분석 -->
-    <div class="inner-page" id="ip-claude">
-      <div class="claude-setup-card" id="claude-setup">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <div style="font-size:28px;">✦</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--text);">Claude AI 심층 분석</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:2px;">수집된 댓글을 Claude가 직접 읽고 크리에이터 관점의 인사이트를 생성합니다</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <div style="flex:1;min-width:200px;display:none;">
-            <label style="font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:0.6px;display:block;margin-bottom:5px;">Anthropic API Key</label>
-            <input type="password" id="claude-apiKey" placeholder="sk-ant-..." autocomplete="off" style="width:100%;" />
-          </div>
-          <div style="min-width:130px;">
-            <label style="font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:0.6px;display:block;margin-bottom:5px;">모델</label>
-            <select id="claude-model" style="width:100%;font-size:13px;padding:9px 10px;">
-              <option value="claude-haiku-4-5-20251001">Haiku (빠름·저렴)</option>
-              <option value="claude-sonnet-4-6" selected>Sonnet (균형)</option>
-            </select>
-          </div>
-          <button class="btn" style="align-self:flex-end;background:var(--purple);" onclick="runClaudeAnalysis()">✦ 분석 시작</button>
-        </div>
-        <div style="margin-top:10px;font-size:11px;color:var(--muted2);">
-          API 키가 없으신가요? <a href="https://console.anthropic.com/" target="_blank" style="color:#aa66ff;">console.anthropic.com</a>에서 발급받으세요.
-          키는 브라우저에만 저장되며 외부로 전송되지 않습니다.
-        </div>
-      </div>
-
-      <div id="claude-progress" style="display:none;text-align:center;padding:40px;">
-        <div class="spinner" style="border-top-color:var(--purple);"></div>
-        <div style="font-size:14px;color:var(--muted);margin-top:12px;" id="claude-progress-text">Claude가 댓글을 분석하는 중...</div>
-      </div>
-
-      <div id="claude-result" style="display:none;"></div>
     </div>
 
   </div>
@@ -1567,26 +1372,6 @@
       <h3>💡 비율 1배수 이상 영상의 패턴</h3>
       <div id="ins-patternContent" style="font-size:13px;color:#aaa;line-height:1.9;"></div>
     </div>
-
-    <!-- 영상 인사이트 AI 패널 -->
-    <div class="claude-ai-trigger-bar" style="margin-top:4px;">
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--text);">✦ Claude AI 업로드 전략 분석</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">요일·길이·키워드 데이터를 바탕으로 최적 업로드 전략을 제안받으세요</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <select id="insight-claude-model" style="font-size:12px;padding:6px 9px;width:auto;">
-          <option value="claude-haiku-4-5-20251001">Haiku (빠름)</option>
-          <option value="claude-sonnet-4-6" selected>Sonnet (균형)</option>
-        </select>
-        <button class="btn" style="background:var(--purple);padding:8px 18px;font-size:12px;" onclick="runTabClaudeAnalysis('insight')">✦ 분석 시작</button>
-      </div>
-    </div>
-    <div id="insight-claude-progress" style="display:none;text-align:center;padding:32px;">
-      <div class="spinner" style="border-top-color:var(--purple);"></div>
-      <div style="font-size:13px;color:var(--muted);margin-top:10px;">Claude가 인사이트 데이터를 분석 중...</div>
-    </div>
-    <div id="insight-claude-result" style="display:none;"></div>
 
   </div>
 
@@ -1949,8 +1734,7 @@ let subscriberCount = 0;
 
 // ── 글로벌 API 키 동기화
 function syncApiKeys() {
-  const yt     = document.getElementById('g-ytKey').value;
-  const claude = document.getElementById('g-claudeKey').value;
+  const yt = document.getElementById('g-ytKey').value;
 
   // YouTube 키 → 모든 탭 입력에 동기화
   ['r-apiKey','c-apiKey','b-apiKey'].forEach(id => {
@@ -1958,41 +1742,22 @@ function syncApiKeys() {
     if (el) el.value = yt;
   });
 
-  // Claude 키 → claude-apiKey 동기화
-  const cEl = document.getElementById('claude-apiKey');
-  if (cEl) cEl.value = claude;
-
   // 상태 아이콘 업데이트
-  const ytStatus     = document.getElementById('g-ytStatus');
-  const claudeStatus = document.getElementById('g-claudeStatus');
-  const ytInput      = document.getElementById('g-ytKey');
-  const claudeInput  = document.getElementById('g-claudeKey');
+  const ytStatus = document.getElementById('g-ytStatus');
+  const ytInput  = document.getElementById('g-ytKey');
 
   if (yt) { ytStatus.textContent = '✓'; ytInput.classList.add('has-value'); }
   else    { ytStatus.textContent = '';  ytInput.classList.remove('has-value'); }
 
-  if (claude) { claudeStatus.textContent = '✓'; claudeInput.classList.add('has-value'); }
-  else        { claudeStatus.textContent = '';   claudeInput.classList.remove('has-value'); }
-
   // 접힌 상태 pill 업데이트
-  const pillYt     = document.getElementById('pill-yt');
-  const pillClaude = document.getElementById('pill-claude');
-  if (pillYt)     pillYt.className     = 'apikey-pill' + (yt     ? ' ok' : '');
-  if (pillClaude) pillClaude.className = 'apikey-pill' + (claude ? ' ok' : '');
-  if (pillYt)     pillYt.textContent     = yt     ? '🔑 YouTube ✓'  : '🔑 YouTube';
-  if (pillClaude) pillClaude.textContent = claude ? '✦ Claude ✓'    : '✦ Claude';
+  const pillYt = document.getElementById('pill-yt');
+  if (pillYt) pillYt.className   = 'apikey-pill' + (yt ? ' ok' : '');
+  if (pillYt) pillYt.textContent = yt ? '🔑 YouTube ✓' : '🔑 YouTube';
 }
 
 function toggleKeyHelp(which) {
-  const ytPanel     = document.getElementById('help-yt');
-  const claudePanel = document.getElementById('help-claude');
-  const target      = which === 'yt' ? ytPanel : claudePanel;
-  const other       = which === 'yt' ? claudePanel : ytPanel;
-
-  // 다른 패널 닫기
-  other.style.display = 'none';
-  // 토글
-  target.style.display = target.style.display === 'none' ? '' : 'none';
+  const ytPanel = document.getElementById('help-yt');
+  ytPanel.style.display = ytPanel.style.display === 'none' ? '' : 'none';
 }
 
 let apikeyBarOpen = true;
@@ -2198,8 +1963,6 @@ async function ratioAnalyze() {
     renderRatioVideos();
     renderInsightQuick();
     updateFab();
-    // AI 패널 표시
-    document.getElementById('ratio-ai-panel').style.display = '';
 
   } catch(err) {
     document.getElementById('r-progress').classList.remove('visible');
@@ -3494,392 +3257,6 @@ function exportBulkPDF() { window.print(); }
 function copyBulkMarkdown() {
   const md = buildBulkMarkdown();
   navigator.clipboard.writeText(md).then(() => showToast('b-copy-toast'));
-}
-
-// ═══════════════════════════════════
-// CLAUDE AI 심층 분석
-// ═══════════════════════════════════
-
-// ── 공통 Claude API 호출
-async function callClaude(claudeKey, model, prompt, maxTokens = 2500) {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': claudeKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-allow-browser': 'true',
-    },
-    body: JSON.stringify({
-      model,
-      max_tokens: maxTokens,
-      messages: [{ role: 'user', content: prompt }]
-    })
-  });
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.error?.message || `API 오류 (${res.status})`);
-  }
-  const data = await res.json();
-  return data.content?.[0]?.text || '';
-}
-
-// ── 조회수 분석 / 영상 인사이트 탭 AI 분석
-async function runTabClaudeAnalysis(tab) {
-  const claudeKey = document.getElementById('g-claudeKey').value.trim();
-  if (!claudeKey) { alert('상단 API 키 바에서 Claude API 키를 먼저 입력해주세요.'); return; }
-  if (!ratioVideos.length) { alert('📈 조회수 분석 탭에서 채널 URL을 입력해 먼저 분석을 실행해주세요.'); return; }
-
-  const model      = document.getElementById(`${tab}-claude-model`).value;
-  const progressEl = document.getElementById(`${tab}-claude-progress`);
-  const resultEl   = document.getElementById(`${tab}-claude-result`);
-
-  if (tab === 'ratio') document.getElementById('ratio-ai-panel').style.display = '';
-
-  progressEl.style.display = '';
-  resultEl.style.display   = 'none';
-
-  try {
-    const prompt = tab === 'ratio' ? buildRatioClaudePrompt() : buildInsightClaudePrompt();
-    const chName = document.getElementById('r-chName')?.textContent || '';
-    const text   = await callClaude(claudeKey, model, prompt);
-    progressEl.style.display = 'none';
-    // 직접 해당 탭 resultEl에 렌더 (중간 #claude-result 거치지 않음)
-    renderClaudeToEl(text, chName, resultEl, `copyTabClaudeResult('${tab}')`);
-    resultEl.dataset.raw = text;
-    resultEl.style.display = '';
-  } catch(e) {
-    console.error('Claude API error:', e);
-    progressEl.style.display = 'none';
-    resultEl.innerHTML = `<div class="error-box visible">Claude API 오류: ${esc(e.message)}</div>`;
-    resultEl.style.display = '';
-  }
-}
-
-// renderClaudeResult를 특정 엘리먼트에 직접 렌더하는 버전
-function renderClaudeToEl(text, chName, el, copyFn) {
-  const sections = text.split(/\n## /).filter(Boolean);
-  let html = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-      <div style="font-size:13px;color:var(--muted);">✦ Claude 분석 완료 · ${esc(chName)}</div>
-      <button class="btn btn-secondary" style="font-size:11px;padding:6px 12px;" onclick="${copyFn}">📋 전체 복사</button>
-    </div>`;
-  sections.forEach(section => {
-    const lines = section.trim().split('\n');
-    const title = lines[0].replace(/^##\s*/, '').trim();
-    const body  = lines.slice(1).join('\n').trim();
-    if (!title || !body) return;
-    if (title.includes('콘텐츠') || title.includes('기획') || title.includes('아이디어')) {
-      const items = body.split(/\n(?=\d+\.|[-*]\s|\*\*\d)/).filter(s => s.trim());
-      const cards = items.map((item, i) => {
-        const itemLines = item.trim().split('\n');
-        const titleLine = itemLines[0].replace(/^[\d\.\-\*\s]+/, '').replace(/\*\*/g,'').trim();
-        const rest = itemLines.slice(1).join('\n').replace(/\*\*/g,'').trim();
-        return `<div class="claude-idea-card"><div class="ci-num">아이디어 ${i+1}</div><div class="ci-title">${esc(titleLine)}</div>${rest ? `<div class="ci-body">${esc(rest).replace(/\n/g,'<br>')}</div>` : ''}</div>`;
-      });
-      html += `<div class="claude-result-section"><h3>💡 ${esc(title)}</h3>${cards.join('')}</div>`;
-    } else if (title.includes('페르소나')) {
-      html += `<div class="claude-result-section"><h3>👤 ${esc(title)}</h3><div class="claude-text">${esc(body).replace(/\*\*/g,'').replace(/\n/g,'<br>')}</div></div>`;
-    } else {
-      html += `<div class="claude-result-section"><h3>${titleIcon(title)} ${esc(title)}</h3><div class="claude-text">${formatClaudeText(body)}</div></div>`;
-    }
-  });
-  el.innerHTML = html;
-}
-
-function copyTabClaudeResult(tab) {
-  const raw = document.getElementById(`${tab}-claude-result`)?.dataset.raw || '';
-  if (raw) navigator.clipboard.writeText(raw).then(() => showFabToast());
-}
-
-function buildRatioClaudePrompt() {
-  const chName = document.getElementById('r-chName')?.textContent || '';
-  const chSubs = document.getElementById('r-chSubs')?.textContent || '';
-  const vids   = getInsightVideos().filter(v => v.dur > 180);
-  const sorted = [...vids].sort((a,b) => b.ratio - a.ratio);
-  const avg    = vids.length ? vids.reduce((s,v)=>s+v.ratio,0)/vids.length : 0;
-  const DAYS   = ['일','월','화','수','목','금','토'];
-
-  const top10 = sorted.slice(0, 10).map((v,i) => {
-    const date = v.pub ? new Date(v.pub).toLocaleDateString('ko-KR',{year:'numeric',month:'short'}) : '—';
-    return `${i+1}. "${v.title}" | 비율 ${v.ratio.toFixed(2)}x | 조회수 ${fmtNum(v.views)} | ${date} | ${fmtDur(v.dur)}`;
-  }).join('\n');
-
-  const bot5 = [...vids].sort((a,b)=>a.ratio-b.ratio).slice(0,5).map((v,i) =>
-    `${i+1}. "${v.title}" | 비율 ${v.ratio.toFixed(2)}x | 조회수 ${fmtNum(v.views)}`
-  ).join('\n');
-
-  return `당신은 유튜브 채널 성장 전문 컨설턴트입니다.
-
-채널: ${chName} | ${chSubs}
-분석 영상 수: ${vids.length}개 | 평균 비율: ${avg.toFixed(2)}x (구독자 대비 조회수)
-
-## 고성과 영상 TOP 10 (비율순)
-${top10}
-
-## 저성과 영상 하위 5개
-${bot5}
-
-위 데이터를 분석해서 **크리에이터가 바로 실행할 수 있는** 전략을 작성해주세요.
-불필요한 서론 없이 바로 시작하세요.
-
-## 고성과 영상의 공통 패턴
-제목, 길이, 업로드 시기에서 발견되는 패턴을 구체적으로 분석해주세요
-
-## 저성과 영상의 문제점
-왜 이 영상들이 상대적으로 저조했는지 솔직하게 분석
-
-## 다음에 만들면 잘 될 영상 5가지
-고성과 패턴을 기반으로, 실제 올릴 수 있는 영상 기획안 제시
-각 아이디어마다:
-- 영상 제목 (실제 유튜브에 올릴 수 있는)
-- 기획 근거 (어떤 패턴에서 착안했는지)
-
-## 제목 전략 제안
-고성과 영상 제목들의 공통점을 분석해서 앞으로 제목 쓸 때 쓸 수 있는 공식 제안
-
-## 업로드 타이밍 전략
-데이터에서 보이는 최적 업로드 시기/패턴`;
-}
-
-function buildInsightClaudePrompt() {
-  const chName    = document.getElementById('r-chName')?.textContent || '';
-  const chSubs    = document.getElementById('r-chSubs')?.textContent || '';
-  const vids      = getInsightVideos();
-  const filterLabel = insFilter==='short'?'숏폼':insFilter==='long'?'롱폼':'전체';
-  const DAYS      = ['일','월','화','수','목','금','토'];
-
-  const daySum={}, dayCnt={};
-  vids.forEach(v => { if(v.dow<0) return; daySum[DAYS[v.dow]]=(daySum[DAYS[v.dow]]||0)+v.ratio; dayCnt[DAYS[v.dow]]=(dayCnt[DAYS[v.dow]]||0)+1; });
-  const dayData = DAYS.map(d => `${d}요일: ${dayCnt[d]?((daySum[d]/dayCnt[d]).toFixed(2)+'x ('+dayCnt[d]+'개)'):'데이터없음'}`).join(', ');
-
-  const lenBuckets = insFilter==='short'
-    ? [{l:'~30초',min:0,max:30},{l:'30초~1분',min:30,max:60},{l:'1~2분',min:60,max:120},{l:'2~3분',min:120,max:180}]
-    : [{l:'~3분',min:0,max:180},{l:'3~5분',min:180,max:300},{l:'5~10분',min:300,max:600},{l:'10~20분',min:600,max:1200},{l:'20분~',min:1200,max:Infinity}];
-  const lenData = lenBuckets.map(b => {
-    const bv = vids.filter(v=>v.dur>=b.min&&v.dur<b.max);
-    const avg = bv.length ? bv.reduce((s,v)=>s+v.ratio,0)/bv.length : 0;
-    return `${b.l}: ${avg.toFixed(2)}x (${bv.length}개)`;
-  }).join(', ');
-
-  const kwMap={};
-  const stopwords=new Set(['영상','이번','이제','우리','저는','제가','있는','없는','하는','하고']);
-  const top30 = [...vids].sort((a,b)=>b.ratio-a.ratio).slice(0,Math.max(1,Math.floor(vids.length*0.3)));
-  top30.forEach(v => v.title.split(/[\s\[\]【】\(\)\|\-_,!?…]+/).forEach(w => {
-    w=w.replace(/[^가-힣a-zA-Z0-9]/g,'').trim();
-    if(w.length<2||stopwords.has(w)) return;
-    kwMap[w]=(kwMap[w]||0)+1;
-  }));
-  const topKw = Object.entries(kwMap).sort((a,b)=>b[1]-a[1]).slice(0,15).map(([w,n])=>`${w}(${n})`).join(', ');
-
-  const yearMap={},yearCnt={};
-  vids.forEach(v => { if(!v.pub) return; const y=new Date(v.pub).getFullYear(); yearMap[y]=(yearMap[y]||0)+v.ratio; yearCnt[y]=(yearCnt[y]||0)+1; });
-  const yearData = Object.keys(yearMap).sort().map(y=>`${y}년: ${(yearMap[y]/yearCnt[y]).toFixed(2)}x (${yearCnt[y]}개)`).join(', ');
-
-  return `당신은 유튜브 알고리즘 전문가이자 채널 성장 컨설턴트입니다.
-
-채널: ${chName} | ${chSubs} | 분석 대상: ${filterLabel} ${vids.length}개 영상
-
-## 데이터
-요일별 평균 비율: ${dayData}
-영상 길이별 평균 비율: ${lenData}
-고성과 영상 제목 키워드: ${topKw}
-연도별 트렌드: ${yearData}
-
-위 데이터를 분석해서 **즉시 실행 가능한** 전략을 작성해주세요. 서론 없이 바로 시작하세요.
-
-## 최적 업로드 요일 전략
-데이터 기반으로 언제 올리는 게 가장 유리한지, 그 이유
-
-## 최적 영상 길이 전략
-어떤 길이대에서 가장 효율이 좋은지, 포맷별 권장 사항
-
-## 제목 키워드 전략
-고성과 영상에서 자주 나오는 키워드를 어떻게 활용할지
-
-## 트렌드 분석
-연도별 데이터에서 보이는 채널 성장/하락 패턴과 원인 추정
-
-## 지금 당장 바꿔야 할 것 3가지
-가장 임팩트가 클 변화 3가지를 우선순위 순으로`;
-}
-
-async function runClaudeAnalysis() {
-  const claudeKey = document.getElementById('g-claudeKey').value.trim()
-                 || document.getElementById('claude-apiKey').value.trim();
-  const model     = document.getElementById('claude-model').value;
-
-  if (!claudeKey) {
-    alert('상단 API 키 바에서 Claude API 키를 먼저 입력해주세요.');
-    return;
-  }
-  if (!allComments.length) {
-    alert('먼저 댓글을 수집해주세요.');
-    return;
-  }
-
-  document.getElementById('claude-setup').style.opacity = '0.5';
-  document.getElementById('claude-progress').style.display = '';
-  document.getElementById('claude-result').style.display = 'none';
-
-  try {
-    // 댓글 데이터 준비 (토큰 절약: 상위 150개, 각 200자 제한)
-    const topComments = [...allComments]
-      .sort((a, b) => b.likes - a.likes)
-      .slice(0, 150);
-
-    const commentText = topComments.map((c, i) => {
-      const plain = c.text.replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').trim().slice(0, 200);
-      return `[${i+1}] 👍${c.likes} | ${plain}`;
-    }).join('\n');
-
-    const chName = document.getElementById('r-chName')?.textContent || '(채널명 미입력)';
-    const chSubs = document.getElementById('r-chSubs')?.textContent || '';
-
-    document.getElementById('claude-progress-text').textContent = 'Claude가 댓글을 읽는 중...';
-
-    const prompt = `당신은 유튜브 채널 성장 전문 컨설턴트입니다.
-아래는 유튜브 채널 "${chName}" (${chSubs})의 실제 시청자 댓글 ${allComments.length}개 중 인기 댓글 ${topComments.length}개입니다.
-
----댓글 데이터---
-${commentText}
----
-
-위 댓글을 분석해서 **크리에이터가 실제로 활용할 수 있는** 인사이트를 아래 형식으로 작성해주세요.
-불필요한 서론 없이 바로 내용으로 시작하세요.
-
-## 시청자 페르소나
-이 채널을 보는 핵심 시청자는 어떤 사람인지 3-4줄로 구체적으로 묘사해주세요.
-(나이대, 관심사, 이 채널에서 얻으려는 것, 라이프스타일 등)
-
-## 시청자가 가장 원하는 콘텐츠 5가지
-댓글에서 직접 발견된 수요를 기반으로, 실제로 만들 수 있는 구체적인 영상 기획안을 제시해주세요.
-각 아이디어마다:
-- 영상 제목 (실제 유튜브에 올릴 수 있는 제목)
-- 기획 이유 (댓글에서 어떤 신호를 발견했는지)
-- 핵심 포인트 2-3개
-
-## 채널이 잘하고 있는 것
-시청자 반응에서 보이는 이 채널만의 강점
-
-## 개선하면 좋을 것
-댓글에서 발견된 불만, 아쉬움, 개선 요청을 솔직하게 정리
-
-## 알고리즘 관점 제안
-댓글 패턴을 보면 어떤 콘텐츠 방향이 유튜브 알고리즘에 유리할지 한 가지만`;
-
-    document.getElementById('claude-progress-text').textContent = 'Claude가 분석 중... (10-20초 소요)';
-
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': claudeKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-allow-browser': 'true',
-      },
-      body: JSON.stringify({
-        model,
-        max_tokens: 2500,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.error?.message || `API 오류 (${res.status})`);
-    }
-
-    const data = await res.json();
-    const text = data.content?.[0]?.text || '';
-
-    document.getElementById('claude-progress').style.display = 'none';
-    document.getElementById('claude-setup').style.opacity = '1';
-    renderClaudeResult(text, chName);
-    document.getElementById('claude-result').style.display = '';
-
-  } catch (e) {
-    document.getElementById('claude-progress').style.display = 'none';
-    document.getElementById('claude-setup').style.opacity = '1';
-    document.getElementById('claude-result').innerHTML =
-      `<div class="error-box visible">Claude API 오류: ${esc(e.message)}</div>`;
-    document.getElementById('claude-result').style.display = '';
-  }
-}
-
-function renderClaudeResult(text, chName) {
-  // 섹션별로 파싱
-  const sections = text.split(/\n## /).filter(Boolean);
-  let html = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-      <div style="font-size:13px;color:var(--muted);">✦ Claude 분석 완료 · ${chName}</div>
-      <button class="btn btn-secondary" style="font-size:11px;padding:6px 12px;" onclick="copyClaudeResult()">📋 전체 복사</button>
-    </div>`;
-
-  sections.forEach(section => {
-    const lines = section.trim().split('\n');
-    const title = lines[0].replace(/^##\s*/, '').trim();
-    const body  = lines.slice(1).join('\n').trim();
-
-    if (!title || !body) return;
-
-    // 아이디어 섹션은 카드형으로
-    if (title.includes('콘텐츠') || title.includes('기획') || title.includes('아이디어')) {
-      // 번호가 붙은 항목으로 분리
-      const items = body.split(/\n(?=\d+\.|[-*]\s|\*\*\d)/).filter(s => s.trim());
-      const cards = items.map((item, i) => {
-        const itemLines = item.trim().split('\n');
-        const titleLine = itemLines[0].replace(/^[\d\.\-\*\s]+/, '').replace(/\*\*/g,'').trim();
-        const rest = itemLines.slice(1).join('\n').replace(/\*\*/g,'').trim();
-        return `<div class="claude-idea-card">
-          <div class="ci-num">아이디어 ${i+1}</div>
-          <div class="ci-title">${esc(titleLine)}</div>
-          ${rest ? `<div class="ci-body">${esc(rest).replace(/\n/g,'<br>')}</div>` : ''}
-        </div>`;
-      });
-
-      html += `<div class="claude-result-section">
-        <h3>💡 ${esc(title)}</h3>
-        ${cards.join('')}
-      </div>`;
-
-    } else if (title.includes('페르소나')) {
-      html += `<div class="claude-result-section">
-        <h3>👤 ${esc(title)}</h3>
-        <div class="claude-text">${esc(body).replace(/\*\*/g,'').replace(/\n/g,'<br>')}</div>
-      </div>`;
-
-    } else {
-      html += `<div class="claude-result-section">
-        <h3>${titleIcon(title)} ${esc(title)}</h3>
-        <div class="claude-text">${formatClaudeText(body)}</div>
-      </div>`;
-    }
-  });
-
-  // 전체 원문 저장 (복사용)
-  document.getElementById('claude-result').dataset.raw = text;
-  document.getElementById('claude-result').innerHTML = html;
-}
-
-function titleIcon(title) {
-  if (title.includes('잘하')) return '✅';
-  if (title.includes('개선')) return '🔧';
-  if (title.includes('알고리즘')) return '📈';
-  if (title.includes('페르소나')) return '👤';
-  return '✦';
-}
-
-function formatClaudeText(text) {
-  return esc(text)
-    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:var(--text)">$1</strong>')
-    .replace(/\n- /g, '\n• ')
-    .replace(/\n/g, '<br>');
-}
-
-function copyClaudeResult() {
-  const raw = document.getElementById('claude-result')?.dataset.raw || '';
-  if (raw) navigator.clipboard.writeText(raw).then(() => showFabToast());
 }
 
 // ═══════════════════════════════════
