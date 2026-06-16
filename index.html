@@ -3541,22 +3541,50 @@ async function runTabClaudeAnalysis(tab) {
 
   try {
     const prompt = tab === 'ratio' ? buildRatioClaudePrompt() : buildInsightClaudePrompt();
+    const chName = document.getElementById('r-chName')?.textContent || '';
     const text   = await callClaude(claudeKey, model, prompt);
     progressEl.style.display = 'none';
-    renderClaudeResult(text, document.getElementById('r-chName')?.textContent || '');
-    // 결과를 해당 탭 패널에 렌더
-    resultEl.innerHTML = document.getElementById('claude-result')?.innerHTML || '';
+    // 직접 해당 탭 resultEl에 렌더 (중간 #claude-result 거치지 않음)
+    renderClaudeToEl(text, chName, resultEl, `copyTabClaudeResult('${tab}')`);
     resultEl.dataset.raw = text;
     resultEl.style.display = '';
-    // 복사 버튼 id 교체
-    resultEl.querySelectorAll('[onclick="copyClaudeResult()"]').forEach(btn => {
-      btn.setAttribute('onclick', `copyTabClaudeResult('${tab}')`);
-    });
   } catch(e) {
+    console.error('Claude API error:', e);
     progressEl.style.display = 'none';
     resultEl.innerHTML = `<div class="error-box visible">Claude API 오류: ${esc(e.message)}</div>`;
     resultEl.style.display = '';
   }
+}
+
+// renderClaudeResult를 특정 엘리먼트에 직접 렌더하는 버전
+function renderClaudeToEl(text, chName, el, copyFn) {
+  const sections = text.split(/\n## /).filter(Boolean);
+  let html = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+      <div style="font-size:13px;color:var(--muted);">✦ Claude 분석 완료 · ${esc(chName)}</div>
+      <button class="btn btn-secondary" style="font-size:11px;padding:6px 12px;" onclick="${copyFn}">📋 전체 복사</button>
+    </div>`;
+  sections.forEach(section => {
+    const lines = section.trim().split('\n');
+    const title = lines[0].replace(/^##\s*/, '').trim();
+    const body  = lines.slice(1).join('\n').trim();
+    if (!title || !body) return;
+    if (title.includes('콘텐츠') || title.includes('기획') || title.includes('아이디어')) {
+      const items = body.split(/\n(?=\d+\.|[-*]\s|\*\*\d)/).filter(s => s.trim());
+      const cards = items.map((item, i) => {
+        const itemLines = item.trim().split('\n');
+        const titleLine = itemLines[0].replace(/^[\d\.\-\*\s]+/, '').replace(/\*\*/g,'').trim();
+        const rest = itemLines.slice(1).join('\n').replace(/\*\*/g,'').trim();
+        return `<div class="claude-idea-card"><div class="ci-num">아이디어 ${i+1}</div><div class="ci-title">${esc(titleLine)}</div>${rest ? `<div class="ci-body">${esc(rest).replace(/\n/g,'<br>')}</div>` : ''}</div>`;
+      });
+      html += `<div class="claude-result-section"><h3>💡 ${esc(title)}</h3>${cards.join('')}</div>`;
+    } else if (title.includes('페르소나')) {
+      html += `<div class="claude-result-section"><h3>👤 ${esc(title)}</h3><div class="claude-text">${esc(body).replace(/\*\*/g,'').replace(/\n/g,'<br>')}</div></div>`;
+    } else {
+      html += `<div class="claude-result-section"><h3>${titleIcon(title)} ${esc(title)}</h3><div class="claude-text">${formatClaudeText(body)}</div></div>`;
+    }
+  });
+  el.innerHTML = html;
 }
 
 function copyTabClaudeResult(tab) {
